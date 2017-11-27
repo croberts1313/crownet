@@ -17,8 +17,8 @@ The following commands were used:
 * Next, grab the Image ID of the created AMI and pass it into CloudFormation as a parameter.
 	* `aws cloudformation create-stack --stack-name DemystData \`
 	* `--template-body file://CF-Challenge.json \`
-	* `--parameters ParameterKey=PackerAMI,ParameterValue=*packer image id*`
-	
+	* `--parameters ParameterKey=PackerAMI,ParameterValue=*packer image id* \`
+	* `ParameterKey=DemystKeyPair,ParameterValue=*valid key pair*`
 ## Files
 
 * `./CF-Challenge.json` CloudFormation template.

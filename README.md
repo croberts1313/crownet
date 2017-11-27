@@ -10,14 +10,14 @@ This project uses a Packer template to provision a prebaked AMI containing the A
 
 ## Deployment
 
-The following commands were used  
+The following commands were used:
 
 * First, create the prebaked AMI using the Packer template:
     * `packer build challenge.packer`
 * Next, grab the Image ID of the created AMI and pass it into CloudFormation as a parameter.
 	* `aws cloudformation create-stack --stack-name DemystData \`
 	* `--template-body file://CF-Challenge.json \`
-	* `--parameters ParameterKey=PackerAMI,ParameterValue=ami-dc4bdca6`
+	* `--parameters ParameterKey=PackerAMI,ParameterValue=*Packer Image ID*`
 	
 ## Files
 

@@ -1,6 +1,6 @@
 # DemystData Challenge
 
-This project uses a Packer template to provision a prebaked AMI containing the Apache web server based off of Amazon Linux. The AMI is then passed to a CloudFormation template as a parameter value. The CloudFormation template creates a VPC with one public subnet, an internet gateway, a NACL with ports 22,80,443 open, an EC2 Instance based off of the Packer AMI that is bootstrapped to provide all updates, set the httpd service to start on boot, and copies over a preconfigured index.html file, and an EC2 security group allowing ports 22,80,443. Finally, CloudFormation outputs the Public URL to access the website.
+This project uses a Packer template to provision a prebaked AMI containing the Apache web server based off of Amazon Linux. The AMI is then passed to a CloudFormation template as a parameter value. The CloudFormation template creates a VPC with one public subnet, an internet gateway, a NACL with ports 22,80,443 open, an EC2 Instance based off of the Packer AMI that is bootstrapped to provide all updates, set the httpd service to start on boot, and copies over a preconfigured index.html file, and an EC2 Security Group allowing ports 22,80,443. Finally, CloudFormation outputs the Public URL to access the website.
 
 ## Requirements
 
@@ -13,11 +13,11 @@ This project uses a Packer template to provision a prebaked AMI containing the A
 The following commands were used:
 
 * First, create the prebaked AMI using the Packer template:
-    * `packer build challenge.packer`
+    * 'packer build challenge.packer'
 * Next, grab the Image ID of the created AMI and pass it into CloudFormation as a parameter.
 	* `aws cloudformation create-stack --stack-name DemystData \`
 	* `--template-body file://CF-Challenge.json \`
-	* `--parameters ParameterKey=PackerAMI,ParameterValue=*Packer Image ID*`
+	* `--parameters ParameterKey=PackerAMI,ParameterValue=*packer image id*`
 	
 ## Files
 

@@ -8,6 +8,11 @@
     "PackerAMI" : {
       "Description" : "AMI from Packer",
       "Type" : "AWS::EC2::Image::Id"
+    },
+
+    "DemystKeyPair" : {
+      "Description" : "Key Pair",
+      "Type" : "AWS::EC2::KeyPair::KeyName"
     }
   },
 
@@ -114,11 +119,23 @@
         "PortRange" : { "From" : "80", "To" : "80" }
       }
     },
+    "InboundHTTPSPublicNetworkAclEntry" : {
+      "Type" : "AWS::EC2::NetworkAclEntry",
+      "Properties" : {
+        "NetworkAclId" : { "Ref" : "PublicNetworkAcl" },
+        "RuleNumber" : "110",
+        "Protocol" : "6",
+        "RuleAction" : "allow",
+        "Egress" : "false",
+        "CidrBlock" : "0.0.0.0/0",
+        "PortRange" : { "From" : "443", "To" : "443" }
+      }
+    },
     "InboundSSHPublicNetworkAclEntry" : {
       "Type" : "AWS::EC2::NetworkAclEntry",
       "Properties" : {
         "NetworkAclId" : { "Ref" : "PublicNetworkAcl" },
-        "RuleNumber" : "102",
+        "RuleNumber" : "120",
         "Protocol" : "6",
         "RuleAction" : "allow",
         "Egress" : "false",
@@ -152,7 +169,8 @@
         "VpcId" : { "Ref" : "VPC" },
         "SecurityGroupIngress" : [
           { "IpProtocol" : "tcp", "FromPort" : "22",  "ToPort" : "22",  "CidrIp" : "0.0.0.0/0" },
-          { "IpProtocol" : "tcp", "FromPort" : "80",  "ToPort" : "80",  "CidrIp" : "0.0.0.0/0" }
+          { "IpProtocol" : "tcp", "FromPort" : "80",  "ToPort" : "80",  "CidrIp" : "0.0.0.0/0" },
+          { "IpProtocol" : "tcp", "FromPort" : "443",  "ToPort" : "443",  "CidrIp" : "0.0.0.0/0" }
         ]
       }
     },
@@ -169,7 +187,7 @@
           "DeleteOnTermination"      : "true",
           "SubnetId"                 : { "Ref" : "PublicSubnet" }
         }],
-        "KeyName" : "DemystData",
+        "KeyName" : {"Ref": "DemystKeyPair"},
         "Tags" : [
           { "Key" : "Name", "Value" : "DemystData" }
         ],

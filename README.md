@@ -25,3 +25,7 @@ The following commands were used:
 * `./challenge.packer` Packer template.
 * `./Scripts/apache.sh` Bash script to install and configure Apache.
 * `https://s3.amazonaws.com/demystdata-challenge/index.html` Preconfigured HTML page stored on S3.
+
+## Output
+
+* [Public URL from CloudFormation](http://ec2-54-163-136-34.compute-1.amazonaws.com/)

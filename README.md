@@ -14,7 +14,7 @@ Finally, CloudFormation outputs the Public URL to access the website.
 
 ## Requirements
 
-* [Packer 1.1.2](http://www.packer.io)
+* Packer 1.1.2
 * AWS CLI 1.12.1
 * Bash
 

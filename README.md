@@ -24,4 +24,4 @@ The following commands were used:
 * `./CF-Challenge.json` CloudFormation template.
 * `./challenge.packer` Packer template.
 * `./Scripts/apache.sh` Bash script to install and configure Apache.
-* `https://s3.amazonaws.com/demystdata-challenge/index.html` Preconfigured HTML page.
+* `https://s3.amazonaws.com/demystdata-challenge/index.html` Preconfigured HTML page stored on S3.

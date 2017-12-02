@@ -38,4 +38,4 @@ The following commands were used:
 
 ## Output
 
-* [Public URL from CloudFormation](http://ec2-54-163-136-34.compute-1.amazonaws.com/)
+
